@@ -1,0 +1,53 @@
+@mixin flex-mixin($justify: center, $align: center, $direction: row) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+  flex-direction: $direction;
+}
+
+@mixin breakpoint($size) {
+  @media (max-width: $size) {
+    @content;
+  }
+}
+@mixin specified-breakpoint($size) {
+  @media (width: $size) {
+    @content;
+  }
+}
+
+@mixin breakpoint-col($min , $max) {
+  @media (min-width: $min ) and (max-width:$max) {
+    @content;
+  }
+}
+
+@mixin grid-system() {
+  @for $i from 1 through 12 {
+    @include breakpoint-col(1600px,4000px) {
+    .col-xxl-#{$i} {
+        grid-column: span $i;
+      }
+    }
+    @include breakpoint-col(1200px,1600px) {
+    .col-xl-#{$i} {
+        grid-column: span $i;
+      }
+    }
+    @include breakpoint-col(992px , 1200px) {
+    .col-lg-#{$i} {
+        grid-column: span $i;
+      }
+    }
+    @include breakpoint-col(768px,992px) {
+    .col-md-#{$i} {
+        grid-column: span $i;
+      }
+    }
+    @include breakpoint-col(0px , 768px) {
+    .col-sm-#{$i} {
+        grid-column: span $i;
+      }
+    }
+  }
+}

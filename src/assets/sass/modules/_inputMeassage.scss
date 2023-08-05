@@ -1,0 +1,13 @@
+@use '../abstracts/variables' as *;
+.inputMessage {
+  color: $color-error-main;
+  position: absolute;
+  right: 0px;
+  transform: translateY(-13px);
+  font-size: 12px;
+  &__svg {
+    fill: $color-error-main;
+    position: relative;
+    top: 3px;
+  }
+}

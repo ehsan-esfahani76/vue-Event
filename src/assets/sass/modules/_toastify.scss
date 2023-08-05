@@ -1,0 +1,12 @@
+@use '../abstracts/variables' as *;
+  .Toastify__toast-theme--colored.Toastify__toast--error {
+    color: $background-light-surface;
+    background-color: $color-error-main;
+  }
+  .Toastify__toast-theme--colored.Toastify__toast--success {
+    color: $color-success-main;
+    background-color: $color-success-main;
+  }
+  .Toastify__close-button {
+    color: $color-gray-900;
+  }

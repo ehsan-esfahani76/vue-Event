@@ -1,0 +1,11 @@
+.date-time-picker {
+  position: absolute !important;
+  right: 0px;
+  top: 15px;
+  width: 100%;
+  input,
+  .vpd-icon-btn {
+    height: 50px !important;
+    opacity: 0;
+  }
+}

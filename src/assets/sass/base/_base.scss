@@ -1,0 +1,67 @@
+@use '../abstracts/variables' as *;
+@font-face {
+  font-family: "yekan bakh";
+  src: url('@/assets/fonts/YekanBakh-Regular.ttf');
+}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  font-family: "yekan bakh",sans-serif;
+  font-weight: normal;
+  list-style: none;
+}
+.fade-enter-active,
+.fade-leave-active {
+  transition: all 0.5s ease-in-out;
+}
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+  animation-name: fadee;
+  animation-delay: .5s;
+}
+body {
+  min-height: 100vh;
+  background-color: $background-light-surface;;
+  transition: color 0.5s, background-color 0.5s;
+  line-height: 1.6;
+  font-size: 15px;
+  text-rendering: optimizeLegibility;
+  scroll-behavior: smooth;
+  & ::-webkit-scrollbar {
+    width: 10px;
+    &-track{
+      background-color: $color-primary-100;
+      border-left: 3px solid white;
+      border-right: 3px solid white;
+    }
+    &-thumb {
+      &:hover{
+        background-color: $color-primary-600;
+      }
+      background-color: $color-primary-400;
+      border-radius: 24px;
+    }
+  }
+  
+  @keyframes fadee {
+    0%{
+      transform: scale(0);
+    }
+    50%{
+      transform: scale(.5);
+    }
+    100%{
+      transform: scale(1);
+    }
+  }
+}
+
+.row {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-gap: 20px;
+  padding: 0;
+}
