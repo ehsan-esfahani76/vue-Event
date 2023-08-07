@@ -11,8 +11,8 @@
       :value="inputValue"
       :id="name"
       required
-      @input="handleChange"
-      @change="$emit('update:modelValue', $event.target.value)"
+      @input="$emit('update:modelValue', $event.target.value)"
+      @change="handleChange"
       @blur="handleBlur"
       :name="name"
       :as="as"

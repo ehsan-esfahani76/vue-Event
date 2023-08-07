@@ -26,6 +26,7 @@
               {{ user.firstName }}
             </li>
           </ul>
+          <p v-else>موردی یافت نشد</p>
         </div>
         <div class="eventModal__buttons">
           <base-button title="تایید" color="blue" @click="confirmHandler" />
