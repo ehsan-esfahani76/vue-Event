@@ -133,7 +133,7 @@ const confirmFilter = (params) => {
 };
 const getActivityTypeByTitle = (title) => {
   const findId = activityTypes.value.find((item) => {
-    return item.tags.title === title;
+    return item.title === title;
   });
   return findId._id;
 };

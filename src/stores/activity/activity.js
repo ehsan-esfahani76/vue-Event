@@ -8,9 +8,9 @@ import {
 } from "../../services/activity/service";
 import { ACTIVITY_SCHEMA, ACTIVITY_PARAMS } from "../../common/constants";
 import { useActivityType } from "@/stores/activityType/activityType.js";
-// import { useFileStorage } from "../fileStorage/fileStorage";
+import { useFileStorage } from "../fileStorage/fileStorage";
 const activityTypeStore = useActivityType();
-// const fileStore = useFileStorage();
+const fileStore = useFileStorage();
 export const useActivity = defineStore("activity", {
   state: () => {
     return { activity: [], images: [], activityProp: [] };
@@ -98,9 +98,9 @@ export const useActivity = defineStore("activity", {
         const data = result;
         if (data) {
           this.activity = data;
-          // data.forEach(async (item) => {
-          //   await this.getFileRequest(item.data.content, item._id);
-          // });
+          data.forEach(async (item) => {
+            await this.getFileRequest(item.data.content, item._id);
+          });
           return data;
         }
       } catch (error) {
@@ -119,26 +119,22 @@ export const useActivity = defineStore("activity", {
       });
       return data;
     },
-    // async getFileRequest(params, id) {
-    //   let backup = [];
-    //   if (this.images.length > 0) {
-    //     backup = this.images.filter((item) => {
-    //       return item.id !== id;
-    //     });
-    //   }
-    //   this.images = [];
-    //   params.forEach(async (item) => {
-    //     if (item.picture) {
-    //       let result = await fileStore.GetFile(item.picture);
-    //       let reader = new FileReader();
-    //       reader.onload = () => {
-    //         this.images.push({ reader, id });
-    //       };
-    //       reader.readAsDataURL(result);
-    //     }
-    //   });
-    //   this.images.push.apply(this.images, backup);
-    // },
+    async getFileRequest(params, id) {
+      let backup = [];
+      if (this.images.length > 0) {
+        backup = this.images.filter((item) => {
+          return item.id !== id;
+        });
+      }
+      this.images = [];
+      params.forEach(async (item) => {
+        if (item.picture) {
+          let result = await fileStore.GetFile(item.picture);
+          this.images.push({ result, id });
+        }
+      });
+      this.images.push.apply(this.images,backup);
+    },
   },
   getters: {
     getImages() {

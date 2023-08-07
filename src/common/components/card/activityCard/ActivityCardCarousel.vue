@@ -3,7 +3,7 @@
     <template v-if="images.length">
       <Slide v-for="(image, index) in images" :key="index">
         <div class="activity-card-carousel__item">
-          <img class="activity-card-carousel__img" :src="image.result" alt="" />
+          <img class="activity-card-carousel__img" :src="`data:image/png;base64,${image}`" alt="" />
         </div>
       </Slide>
     </template>

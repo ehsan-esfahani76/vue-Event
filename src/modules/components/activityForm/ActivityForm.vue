@@ -135,13 +135,14 @@ const fileStorageRequest = async (params) => {
     putFile.forEach((item) => {
       dataInputs.content.push({
         description: "",
-        picture: item.id,
+        picture: item.file._id,
       });
     });
   } else {
+    console.log(putFile);
     dataInputs.content.push({
       description: "",
-      picture: putFile.id,
+      picture: putFile._id,
     });
   }
 };

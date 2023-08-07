@@ -1,13 +1,10 @@
 const SERVICES_URL = {
   ACTIVITY: "http://localhost:3000/activity",
-  ACTIVITY_TYPE:
-    "http://localhost:3000/activityType",
-  EVENT:
-    "http://localhost:3000/event",
-  USER:
-    "http://localhost:3000/user",
+  ACTIVITY_TYPE: "http://localhost:3000/activityType",
+  EVENT: "http://localhost:3000/event",
+  USER: "http://localhost:3000/user",
+  FILESTORAGE: "http://localhost:3000/fileStorage",
 };
-
 
 const ACTIVITY_SCHEMA = (
   { title, description, date, startTime, endTime, activityType, content, id },
@@ -24,20 +21,20 @@ const ACTIVITY_SCHEMA = (
       userId: USER_ID,
     },
     data: {
-        title,
-        description,
-        date,
-        startTime,
-        content,
-        endTime,
-        activityType,
+      title,
+      description,
+      date,
+      startTime,
+      content,
+      endTime,
+      activityType,
     },
   };
   return schema;
 };
 
 const EVENT_SCHEMA = (
-  { title, dueDate, description, time, users ,id ,sharedTag},
+  { title, dueDate, description, time, users, id, sharedTag },
   keyName
 ) => {
   const USER_ID = JSON.parse(localStorage.getItem("info"))?._id;
@@ -48,14 +45,14 @@ const EVENT_SCHEMA = (
       dueDate,
       userId: USER_ID,
       time,
-      ...sharedTag
+      ...sharedTag,
     },
     data: {
-        title,
-        dueDate,
-        description,
-        time,
-        users,
+      title,
+      dueDate,
+      description,
+      time,
+      users,
     },
   };
   return schema;
@@ -78,14 +75,14 @@ const ACTIVITY_TYPE_PARAMS = (id) => {
   return params;
 };
 
-const EVENT_PARAMS = (id)=>{
+const EVENT_PARAMS = (id) => {
   const USER_ID = JSON.parse(localStorage.getItem("info"))?._id;
   const params = {
     uniqueKey: USER_ID,
     id,
   };
-  return params
-}
+  return params;
+};
 
 export {
   SERVICES_URL,
@@ -93,5 +90,5 @@ export {
   ACTIVITY_PARAMS,
   ACTIVITY_TYPE_PARAMS,
   EVENT_SCHEMA,
-  EVENT_PARAMS
+  EVENT_PARAMS,
 };

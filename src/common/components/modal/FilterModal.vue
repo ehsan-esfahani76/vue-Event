@@ -120,7 +120,7 @@ const props = defineProps({
     default: {},
   },
 });
-console.log(filtersTags);
+console.log(props);
 const confirmHandler = (params) => {
   emits("confirm");
 };

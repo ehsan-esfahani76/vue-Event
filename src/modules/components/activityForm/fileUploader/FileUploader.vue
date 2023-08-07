@@ -5,7 +5,8 @@
         <div class="file-uploader__item">
           <base-card @click="handleClick" class="file-uploader__card">
             <template #card>
-              <img class="file-uploader__card-img" :src="image" alt="" />
+              <img class="file-uploader__card-img" v-if="image.file" :src="`data:image/png;base64,${image.file.data}`" alt="" />
+              <img class="file-uploader__card-img" v-else :src="image" alt="" />
             </template>
           </base-card>
         </div>
@@ -83,7 +84,7 @@ watch(
   () => {
     activityStore.images.forEach((item) => {
       if (item.id === props.id) {
-        files.push(item.reader.result);
+        files.push(item.result);
       }
     });
   },

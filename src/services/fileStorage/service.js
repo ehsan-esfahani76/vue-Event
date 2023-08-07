@@ -2,7 +2,7 @@ import { SERVICES_URL } from "../../common/constants";
 import { axiosInstance } from "../config";
 const putData = async(params)=> {
   try {
-    const data = await axiosInstance.put(SERVICES_URL.FileStorage, params);
+    const data = await axiosInstance.post(SERVICES_URL.FILESTORAGE, params);
     return data;
   } catch (err) {
     return err;
@@ -11,8 +11,7 @@ const putData = async(params)=> {
 
 const getData =async(id)=> {
   try {
-    const data = await axiosInstance.get(SERVICES_URL.FileStorage, {
-      responseType: "blob",
+    const data = await axiosInstance.get(SERVICES_URL.FILESTORAGE, {
       params:{
         id
       }

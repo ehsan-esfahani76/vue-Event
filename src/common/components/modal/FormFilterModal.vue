@@ -17,7 +17,7 @@
           <datalist id="search">
             <option
               v-for="activityType in activityTypeList"
-              :value="activityType.tags.title"
+              :value="activityType.title"
             ></option>
           </datalist>
 
@@ -64,6 +64,7 @@ const props = defineProps({
     default: [],
   },
 });
+console.log(props.activityTypeList);
 const confirmHandler = (params) => {
   emits("confirm", props.title);
 };
