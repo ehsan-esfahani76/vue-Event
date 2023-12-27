@@ -94,7 +94,7 @@ const imagesList = storeToRefs(useActivity()).images;
 const getFileRequest = (params) => {
   imagesList.value.map((element, index) => {
     if (element.id === props.id) {
-      images.value.push(element.result.file.data);
+      images.value.push(element.result?.file?.data);
     }
   });
 };

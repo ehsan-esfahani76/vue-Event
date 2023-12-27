@@ -117,6 +117,7 @@ export const useActivity = defineStore("activity", {
       this.activity = this.activity.filter((item) => {
         return item._id !== id;
       });
+      console.log(this.activity);
       return data;
     },
     async getFileRequest(params, id) {

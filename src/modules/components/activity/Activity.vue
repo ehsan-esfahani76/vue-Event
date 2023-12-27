@@ -7,7 +7,7 @@
       <template v-if="activityList.length > 0">
         <li
           class="activity__item"
-          v-for="(activity) in activityList"
+          v-for="activity in activityList"
           :key="activity._id"
         >
           <ActivityCard
@@ -48,15 +48,12 @@ const clickHandler = () => {
   modalStore.handleActivityModal();
 };
 onMounted(async () => {
-  if(store.activity.length === 0)
-  await store.getActivity();
+  if (store.activity.length === 0) await store.getActivity();
 });
 watch(
   () => store.activity,
   () => {
-    if (store.activity.length > 0) {
-      activityList.value = store.activity.slice(-4)
-    }
+    activityList.value = store.activity?.slice(-4);
     emptyCard.value = 4 - activityList.value.length;
   },
   { immediate: true, deep: true }

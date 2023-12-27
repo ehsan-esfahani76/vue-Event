@@ -8,11 +8,7 @@
     </div>
     <ul class="event__list" v-else>
       <template v-if="eventList.length">
-        <li
-          class="event__item"
-          v-for="(event) in eventList"
-          :key="event._id"
-        >
+        <li class="event__item" v-for="event in eventList" :key="event._id">
           <EventCard
             class="event__item--active"
             :title="event.tags.title"
@@ -51,9 +47,7 @@ onMounted(async () => {
 watch(
   () => store.events,
   () => {
-    if (store.events.length) {
-      eventList.value = store.events.slice(-3)
-    }
+    eventList.value = store.events?.slice(-3);
     emptyCard.value = 3 - eventList.value.length;
   },
   { immediate: true, deep: true }
